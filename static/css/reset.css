@@ -1,0 +1,13 @@
+*,:after,:before{
+    /* 通配符选择器无法选中页面中的伪元素 */
+    padding:0;
+    margin:0;
+    border:none;
+    outline: none;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    color:inherit;
+    font-weight: normal;
+    font-size:inherit;
+}
