@@ -218,6 +218,23 @@
 </script>
 
 <style scoped>
+  @media screen and (min-width: 1475px){
+    .banner img{
+      width: 100%;
+      transform: translateY(-20%);
+    }
+  }
+  @media screen and (min-width: 1175px){
+    .banner img{
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 1175px){
+    .banner img{
+      height: 100%;
+      transform: translateY(0);
+    }
+  }
   @media screen and (min-width: 992px){
     .pic-box{
       transition: all .3s;
@@ -252,11 +269,11 @@
   }
 .banner{
   position: relative;
+  overflow: hidden;
   max-height: 650px;
 }
   .banner img{
     display: block;
-    height: 100%;
     padding:0 ;
   }
   h2{
