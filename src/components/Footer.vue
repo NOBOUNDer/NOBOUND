@@ -70,7 +70,16 @@
         </ul>
       </div>
       <div class="copyright row">
-        <p class="container">© 2019 无边的摄影术.</p>
+        <div class="container">
+          <div class="row align-items-center">
+            <p class="col-auto">© 2019 无边的摄影术.</p>
+            <div class="wechat col-auto">
+              <i class="fa fa-weixin"></i>
+              <img src="../../static/img/wechat.jpg" alt="">
+            </div>
+            <a href="https://github.com/NOBOUNDer" target="_blank" class="col-auto gitHub"><i class="fa fa-github-square "></i></a>
+          </div>
+        </div>
       </div>
       </div>
 </template>
@@ -189,5 +198,35 @@
   }
   .copyright p{
     margin-bottom: 0;
+  }
+  .fa{
+    display: block;
+    transition: all .3s;
+  }
+  .fa-weixin{
+    font-size: 20px;
+    transition: all .3s;
+    cursor: pointer;
+  }
+  .fa:hover{
+    color: #27CCC0;
+    transform: scale(1.2,1.2);
+  }
+  .gitHub{
+    font-size: 22px;
+  }
+  .wechat{
+    position: relative;
+  }
+  .wechat img{
+    width: 150px;
+    position: absolute;
+    left: 50%;
+    top: -170px;
+    transform: translateX(-50%);
+    display: none;
+  }
+  .wechat:hover>img{
+    display: block;
   }
 </style>

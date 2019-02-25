@@ -48,7 +48,7 @@
   position: fixed;
   right: 30px;
   bottom: -32px;
-  background: rgba(0, 0, 0, 0.23);
+  background: rgba(39, 204, 192, 0.23);
   border-radius: 3px;
   transition: all .3s;
   z-index: 111111;

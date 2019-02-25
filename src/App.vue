@@ -5,6 +5,7 @@
         <router-view></router-view>
       </transition>
       <BackTop/>
+      <Links/>
     <Footer/>
   </div>
 </template>
@@ -14,9 +15,10 @@ import axios from 'axios'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BackTop from "./components/BackTop";
+import Links from "./components/Links";
 export default {
   name: 'App',
-  components: {BackTop, Footer, Header},
+  components: {Links, BackTop, Footer, Header},
   /*provide是提供数据给子组件或孙子组件   这个过程称为依赖注入*/
   provide(){
     return {
