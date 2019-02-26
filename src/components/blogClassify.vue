@@ -83,6 +83,7 @@
           shadow:'1px 0 2px #333',
           logo:'block',
           logo2:'none',
+          store:this.$store,
         }
       },
       components: {Footer, Header},
