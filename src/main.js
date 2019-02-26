@@ -15,7 +15,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import  'bootstrap/dist/js/bootstrap.min'
 import '../static/css/normalize.css'
 import config from './components/config'
-import VueLazyload from 'vue-lazyload'
 
 Vue.prototype.$qs = qs;
 
@@ -40,6 +39,7 @@ const store = new Vuex.Store({
     logoHeight:'50px',
     swiper:document.body.clientHeight,
     paginationTop:'',
+    isShow:false,
   },
   getters:{
     //getters 是对公共数据进行计算使用的    （getters相当于组件中的computed）
@@ -68,6 +68,9 @@ const store = new Vuex.Store({
     },
     changePaginationTop(state,data){
       state.paginationTop=data.PT;
+    },
+    IsShow(state,data){
+      state.isShow=data.IS;
     }
   },
   /*actions 是用来调用 mutations 里面的方法*/
@@ -79,6 +82,21 @@ const store = new Vuex.Store({
     }
   }
 });
+
+//定义一个请求拦截器
+axios.interceptors.request.use(function(config){
+  store.commit('IsShow',{
+    IS:true,
+  }) //在请求发出之前进行一些操作
+  return config
+})
+//定义一个响应拦截器
+axios.interceptors.response.use(function(config){
+  store.commit('IsShow',{
+    IS:false,
+  })//在这里对返回的数据进行处理
+  return config
+})
 
 router.beforeEach((to,from,next)=>{
   //全局守卫 在进入任何路由之前执行

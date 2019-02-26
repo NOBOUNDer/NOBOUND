@@ -1,11 +1,12 @@
 <template>
   <div id="app">
     <Header/>
-      <transition enter-active-class="animated bounceInRight" leave-active-class="animated fadeOut" mode="out-in">
+      <transition enter-active-class="animated bounceInRight"  mode="out-in">
         <router-view></router-view>
       </transition>
       <BackTop/>
       <Links/>
+      <loading/>
     <Footer/>
   </div>
 </template>
@@ -16,9 +17,10 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BackTop from "./components/BackTop";
 import Links from "./components/Links";
+import Loading from "./components/loading";
 export default {
   name: 'App',
-  components: {Links, BackTop, Footer, Header},
+  components: {Loading, Links, BackTop, Footer, Header},
   /*provide是提供数据给子组件或孙子组件   这个过程称为依赖注入*/
   provide(){
     return {
@@ -100,7 +102,7 @@ export default {
     text-decoration: none !important;
   }
   #header a,.right-nav a,.column,.motto,.blog-title{
-    font-family: "W Sans New Book" !important;
+    font-family: 'englishFont' !important;
   }
   h2{
     line-height: 36px !important;
