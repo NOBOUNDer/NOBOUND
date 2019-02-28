@@ -42,6 +42,7 @@ const routes=[
   {path:'/tibet/:id?',component: resolve => require(['@/components/Tibet'],resolve),meta:{title:'Tibet 西藏 | 无边的摄影术'}},
   {path:'/argentina/:id?',component: resolve => require(['@/components/Argentina'],resolve),meta:{title:'Argentina 阿根廷 | 无边的摄影术'}},
   {path:'/hk/:id?',component: resolve => require(['@/components/hk'],resolve),meta:{title:'Hong Kong 香港 | 无边的摄影术'}},
+  {path:'/about/:id?',component: resolve => require(['@/components/about'],resolve),meta:{title:'About 关于 | 无边的摄影术'}},
 ];
 
 const router = new Router({
