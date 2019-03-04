@@ -46,7 +46,7 @@
               <div class="article-classified mb-5">
                 <h2>分类目录</h2>
                 <ul>
-                  <li v-for="(v,index) in AllClassify" :key="index">
+                  <li v-for="(v,index) in store.state.ClassifyData" :key="index">
                     <router-link :to="'/blogClassify/'+v.id">{{v.navName}}</router-link>
                   </li>
                 </ul>
@@ -71,18 +71,10 @@
         name: "blogClassify",
       data(){
         return {
-          AllClassify:[],
           RecentBlog:[],
           CurrentClassify:'',
           keyword:'',
           BlogArticle:[],
-          bg:'#fff',
-          color:'#27CCC0',
-          h3:'#333',
-          navColor:'#888',
-          shadow:'1px 0 2px #333',
-          logo:'block',
-          logo2:'none',
           store:this.$store,
         }
       },
@@ -101,12 +93,6 @@
             HN:'#333',
           });
         },
-            //获取所有分栏
-            getAllClassify(){
-              this.$axios.get(`${config.server}/api/getAllClassify`).then((resp)=>{
-                this.AllClassify=resp.data;
-              })
-            },
         //获取当前分栏
         getCurrentClassify(pid){
           this.$axios.get(`${config.server}/api/getClassify`,{params:{pid:pid}}).then((resp)=>{
@@ -156,7 +142,6 @@
         },
       },
       created(){
-          this.getAllClassify();
           this.getRecentBlog();
           this.getCurrentClassify(this.$route.params.id);
           this.getBlogArticleClassify(this.$route.params.id);

@@ -40,6 +40,9 @@ const store = new Vuex.Store({
     swiper:document.body.clientHeight,
     paginationTop:'',
     isShow:false,
+    ClassifyData:[],
+    AllComments:[],
+    AllBlog:[],
   },
   getters:{
     //getters 是对公共数据进行计算使用的    （getters相当于组件中的computed）
@@ -71,32 +74,37 @@ const store = new Vuex.Store({
     },
     IsShow(state,data){
       state.isShow=data.IS;
+    },
+
+    /*公共方法*/
+    //获取分栏
+    getClassify(state){
+      axios.get(`${config.server}/api/getAllClassify`).then((resp)=>{
+        state.ClassifyData=resp.data;
+      })
+    },
+    getAllComments(state){
+      axios.get(`${config.server}/api/getAllComments`).then((resp)=>{
+        state.AllComments=resp.data;
+      });
+    },
+    getAllBlog(state){
+      axios.get(`${config.server}/api/getBlog`).then(resp=>{
+        state.AllBlog=resp.data;
+      });
     }
   },
   /*actions 是用来调用 mutations 里面的方法*/
   actions:{
-    bbb(context,abc){
-      //bbb 相当于方法名称
-      //context相当于 store
-      context.commit('aaa',abc);//相当于store.commit('aaa')
-    }
+    getCommon(context){
+      context.commit('getClassify');
+      context.commit('getAllComments');
+      context.commit('getAllBlog');
+    },
   }
 });
 
-//定义一个请求拦截器
-axios.interceptors.request.use(function(config){
-  store.commit('IsShow',{
-    IS:true,
-  }) //在请求发出之前进行一些操作
-  return config
-})
-//定义一个响应拦截器
-axios.interceptors.response.use(function(config){
-  store.commit('IsShow',{
-    IS:false,
-  })//在这里对返回的数据进行处理
-  return config
-})
+store.dispatch('getCommon');
 
 router.beforeEach((to,from,next)=>{
   //全局守卫 在进入任何路由之前执行
@@ -107,24 +115,13 @@ router.beforeEach((to,from,next)=>{
   next();
 });
 
-router.beforeResolve((to,from,next)=>{
-  //在beforeEach执行完并且，所有子路由内部的守卫执行完之后执行
-  next();
-});
-
 router.afterEach((to,from,next)=>{
   //跳转之后滚动条回到顶部
   window.scrollTo(0,0);
 });
-/*全局过滤器*/
-Vue.filter('Times',function (v) {
-  /*v用来接收需要过滤的数据*/
-  return v.replace(/\//g,"-");
-});
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,//ES6简写，相当于router:router,

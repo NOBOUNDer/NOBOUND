@@ -120,7 +120,6 @@
             h3:'#333',
             navColor:'#888',
             shadow:'1px 0 2px #333',
-            /*store:this.$store,*/
           }
       },
       computed:{

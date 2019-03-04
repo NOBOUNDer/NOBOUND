@@ -5,7 +5,7 @@
           <li class="col-xl-3 col-lg-3 col-md-6 col-12 mb-xl-0 mb-lg-0 mb-3">
             <h4>分类目录</h4>
             <dl>
-            <dt v-for="(v,index) in AllClassify" :key="index">
+            <dt v-for="(v,index) in store.state.ClassifyData" :key="index">
               <router-link :to="'/blogClassify/'+v.id">{{v.navName}}</router-link>
             </dt>
             </dl>
@@ -90,20 +90,12 @@
         name: "Footer",
       data(){
          return {
-           AllClassify:[],
-           AllBlog:[],
            RecentComments:[],
            RecentBlog:[],
            store:this.$store
          }
       },
       methods:{
-        //获取所有分栏
-        getAllClassify(){
-          this.$axios.get(`${config.server}/api/getAllClassify`).then((resp)=>{
-            this.AllClassify=resp.data;
-          })
-        },
         //获取近期文章
         getRecentBlog(){
           this.$axios.get(`${config.server}/api/getRecentBlog`,{params:{type:7}}).then((resp)=>{
@@ -111,27 +103,21 @@
           })
         },
         //获取近期评论
-        getAllComments(){
+        getRecentComments(){
           this.$axios.get(`${config.server}/api/getRecentComments`).then((resp)=>{this.RecentComments=resp.data});
-        },
-        //获取所有文章
-        getAllBlog(){
-          this.$axios.get(`${config.server}/api/getBlog`).then(resp=>{this.AllBlog=resp.data});
         },
         //近期评论所属文章所属分栏
         Pid(id){
-          for (var i = 0; i < this.AllBlog.length; i++) {
-            if (this.AllBlog[i].id == id) {
-              return this.AllBlog[i].pid;
+          for (var i = 0; i < this.store.state.AllBlog.length; i++) {
+            if (this.store.state.AllBlog[i].id == id) {
+              return this.store.state.AllBlog[i].pid;
             }
           }
         }
       },
       created(){
-          this.getAllClassify();
           this.getRecentBlog();
-          this.getAllComments();
-          this.getAllBlog();
+          this.getRecentComments();
       }
     }
 </script>

@@ -6,7 +6,6 @@
       </transition>
       <BackTop/>
       <Links/>
-      <loading/>
     <Footer/>
   </div>
 </template>
@@ -17,40 +16,14 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BackTop from "./components/BackTop";
 import Links from "./components/Links";
-import Loading from "./components/loading";
 export default {
   name: 'App',
-  components: {Loading, Links, BackTop, Footer, Header},
+  components: {Links, BackTop, Footer, Header},
   /*provide是提供数据给子组件或孙子组件   这个过程称为依赖注入*/
   provide(){
     return {
       appDate1:'HELLO WORLD'
     }
-  },
-  data() {
-    return {}
-  },
-  methods: {
-    mApp(a) {
-      console.log(a);
-    },
-    /*axios POST请求*/
-    abc() {
-      let postData = this.$qs.stringify({
-        id: 34
-      });
-      axios.post("http://127.0.0.1/api/getArticle", postData, {
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-      }).then(response=>console.log(response)).catch(e=>alert('失败'))
-    },
-    /*axios GET请求*/
-    abc1() {
-      axios.get("http://127.0.0.1/api/getAllArticle", {params: {order: 'desc'}}).then
-      (response=>console.log(response)).catch(e=>alert("失败"));
-    },
-  },
-  mounted() {
-
   },
 }
 </script>
@@ -61,10 +34,6 @@ export default {
   @font-face {
     font-family: englishFont;
     src: url("../static/font/WSansNew-Book.woff.ttf");
-  }
-  @font-face {
-    font-family: chineseFont;
-    src: url("../static/font/SourceHanSerifCN-ExtraLight_0.otf");
   }
 
 

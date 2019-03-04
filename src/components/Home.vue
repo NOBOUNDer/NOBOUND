@@ -51,7 +51,7 @@
                         <h2><router-link :to="'/article/'+props.value.id+'/'+props.value.pid">{{props.value.title}}</router-link></h2>
                         <p>
                           <span>By <a href="">{{props.value.author}}</a></span> |
-                          <span><router-link :to="'/blogClassify/'+props.value.pid">{{ClassifyData[props.value.pid-1].navName}}</router-link></span> |
+                          <span><router-link :to="'/blogClassify/'+props.value.pid">{{store.state.ClassifyData[props.value.pid-1].navName}}</router-link></span> |
                           <span>{{CommentsNum(props.value.id)}} comments</span>
                         </p>
                       </div>
@@ -83,7 +83,7 @@
                         <h2><router-link :to="'/article/'+props.value.id+'/'+props.value.pid">{{props.value.title}}</router-link></h2>
                         <p>
                           <span>By <a href="">{{props.value.author}}</a></span> |
-                          <span><router-link :to="'/blogClassify/'+props.value.pid">{{ClassifyData[props.value.pid-1]?ClassifyData[props.value.pid-1].navName:''}}</router-link></span> |
+                          <span><router-link :to="'/blogClassify/'+props.value.pid">{{store.state.ClassifyData[props.value.pid-1]?store.state.ClassifyData[props.value.pid-1].navName:''}}</router-link></span> |
                           <span>{{CommentsNum(props.value.id)}} comments</span>
                         </p>
                       </div>
@@ -122,9 +122,7 @@
           navData:[],
           navSon:[],
           BlogData:[],
-          ClassifyData:[],
           HandPickBlog:[],
-          AllComments:[],
           Bound:[],
           store:this.$store
         }
@@ -162,27 +160,17 @@
             this.BlogData=resp.data;
           })
         },
-        //获取所有分栏
-        getClassify(){
-          this.$axios.get(`${config.server}/api/getAllClassify`).then((resp)=>{
-            this.ClassifyData=resp.data;
-          })
-        },
         //获取精选博文
         getHandpickBlog(){
           this.$axios.get(`${config.server}/api/getBlogArticleClassifyType`,{params:{type:'6',pid:'1'}}).then((resp)=>{
             this.HandPickBlog=resp.data;
           })
         },
-        //获取所有评论
-        getAllComments(){
-          this.$axios.get(`${config.server}/api/getAllComments`).then((resp)=>{this.AllComments=resp.data});
-        },
         //获取评论条数
         CommentsNum(id){
           var num=0;
-          for (var i=0;i<this.AllComments.length;i++) {
-            if (this.AllComments[i].pid == id) {
+          for (var i=0;i<this.store.state.AllComments.length;i++) {
+            if (this.store.state.AllComments[i].pid == id) {
               num=num+1
             }
           }
@@ -191,7 +179,6 @@
         getNobound(){
           this.$axios.get(`${config.server}/api/getArticlePidNum`,{params:{pid:'3'}}).then((resp)=>{
             this.Bound=resp.data;
-            console.log(resp.data);
           })
         },
         //转换时间格式
@@ -205,10 +192,8 @@
       created(){
           this.getTopNavs();
           this.getBlog();
-          this.getClassify();
           this.getNobound();
           this.getHandpickBlog();
-          this.getAllComments();
       },
       mounted(){
           this.headerStyle();
@@ -289,7 +274,7 @@
   }
   .nav-title{
     text-align: center;
-    font-family: 'chineseFont' !important;
+    font-family: 微软雅黑;
     font-size: 20px;
   }
   .column-box,.motto{

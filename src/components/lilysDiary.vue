@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div id="lilys-diary" class="container-fluid" :style="{transform:`translateX(${this.store.state.topRight})`,transition:'all .7s ease .2s'}">
-    <div class="lilys-top p-0">
-      <div class="lilys-top-title row align-items-center">
+    <div id="lilys-diary" class="container-fluid presentation" :style="{transform:`translateX(${this.store.state.topRight})`,transition:'all .7s ease .2s'}">
+    <div class="presentation-top p-0">
+      <div class="lilys-top-title presentation-top-title row align-items-center">
         <banner/>
       </div>
     </div>
     <div class="lilys-description container">
       Lily，80后，从西安来到北京，从事法律行业。外表柔弱，内心强大，心思细腻，情感丰富。工作强度大，花光了所有的积蓄去南极。
     </div>
-    <div class="lilys-lists container">
+    <div class="presentation-lists container">
       <ul class="row justify-content-start">
         <li v-for="(v,index) in ImgData" class="row col-12 col-md-6 col-lg-4 no-gutters mb-4">
-          <div class="lilys-img-box col-12">
+          <div class="presentation-img-box col-12">
             <div class="shade position-absolute col-12 p-0">
               <span @click="ViewLarger(index)">View Larger</span>
             </div>
@@ -42,7 +42,6 @@
           swiperIndex:'test2',
           swiperSon:'test3',
           bannerTitleAlign:'left',
-          bottom:(188+document.documentElement.clientHeight/2+10)+'px',
           store:this.$store,
         }
       },
@@ -94,110 +93,13 @@
 </script>
 
 <style scoped>
-  @media screen and (min-width: 1474px){
-    .lilys-top-title{
-      background-size: 100% auto !important;
-    }
-  }
-  @media screen and (min-width: 940px) and (max-width: 992px){
-    .lilys-top-title{
-      background-size: 100% auto !important;
-    }
-  }
-  @media screen and (min-width: 992px){
-    .lilys-img-box .shade{
-      z-index: 11;
-      opacity: 0;
-      height: 100%;
-      background: rgba(39, 204, 192, 0.8);
-      transition: all .3s;
-    }
-    .lilys-img-box .shade span{
-      padding: 10px 15px;
-      font-size: 12px;
-      font-family: 'englishFont' !important;
-      background: #252525;
-      border-radius: 5px;
-      color: #fff;
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translateY(-50%) translateX(-50%);
-      transition: all .3s;
-      cursor: pointer;
-    }
-    .lilys-img-box:hover>.shade{
-      opacity: 1;
-    }
-    .lilys-img-box:hover>.shade>span{
-      top: 50%;
-    }
-  }
-  @media screen and (min-width: 992px){
-    .lilys-top-title{
-      height: 350px;
-    }
-  }
-  @media screen and (max-width: 992px){
-    .lilys-top{
-      height: 285px;
-    }
-    .lilys-top-title{
-      height: 220px;
-      top: 65px;
-    }
-    .shade{
-      display: none !important;
-    }
-  }
-  @media screen and (max-width: 690px){
-    .lilys-top{
-      height: 232px;
-    }
-    .lilys-top-title{
-      height: 167px;
-      top: 65px;
-    }
-  }
-  @media screen and (max-width: 480px){
-    .lilys-top{
-      height: 205px;
-    }
-    .lilys-top-title{
-      height: 140px;
-      top: 65px;
-    }
-  }
-  .lilys-top-title{
-    position:relative;
-    background: url('../../static/img/lilys-diary.jpg') no-repeat top;
-    background-size: auto 100%;
-  }
-  html, body {
-    position: relative;
-    height: 100%;
-  }
-  #lilys-diary{
-    background: #f8f8f8;
-  }
-  .lilys-lists span{
-    font-family: 'englishFont' !important;
-    font-size: 17px;
-    font-weight: 500;
-  }
-  .lilys-lists{
-    margin-top: 50px;
-    padding-bottom: 50px;
-  }
-  .lilys-img-box{
-    position: relative;
-  }
-  .lilys-img-box img{
-    cursor: pointer;
-  }
+  @import "../../static/css/picPresentation.css";
   .lilys-description{
     font-size: 13px;
     color: #4e4e4e;
     margin-top: 72px;
+  }
+  .lilys-top-title{
+    background: url('../../static/img/lilys-diary.jpg') no-repeat top;
   }
 </style>

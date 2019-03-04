@@ -67,7 +67,7 @@
 </script>
 
 <style scoped>
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1366px) {
     .swiper-container{
       width: 1000px !important;
       height: 610px !important;
@@ -76,7 +76,7 @@
       right: 27px !important;
     }
   }
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1366px) {
     .swiper-container{
       width: 800px !important;
       height: 500px !important;

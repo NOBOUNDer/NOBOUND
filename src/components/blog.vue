@@ -14,7 +14,7 @@
                 <h2><router-link :to="'/article/'+props.value.id+'/'+props.value.pid">{{props.value.title}}</router-link></h2>
                 <p>
                   <span>By <a href="">{{props.value.author}}</a></span> |
-                  <span><router-link :to="'/blogClassify/'+props.value.pid">{{ClassifyData[props.value.pid-1].navName}}</router-link></span> |
+                  <span><router-link :to="'/blogClassify/'+props.value.pid">{{store.state.ClassifyData[props.value.pid-1].navName}}</router-link></span> |
                   <span>{{CommentsNum(props.value.id)}} comments</span>
                 </p>
               </div>
@@ -48,7 +48,7 @@
               <h2><router-link :to="'/article/'+prop.value.id+'/'+prop.value.pid">{{prop.value.title}}</router-link></h2>
               <p>
                 <span>By <a href="">{{prop.value.author}}</a></span> |
-                <span><router-link :to="'/blogClassify/'+prop.value.pid">{{ClassifyData[prop.value.pid-1].navName}}</router-link></span> |
+                <span><router-link :to="'/blogClassify/'+prop.value.pid">{{store.state.ClassifyData[prop.value.pid-1].navName}}</router-link></span> |
                 <span>{{CommentsNum(prop.value.id)}} comments</span>
               </p>
             </div>
@@ -81,15 +81,7 @@
       data(){
         return {
           BlogData:[],
-          ClassifyData:[],
           HandPickBlog:[],
-          AllComments:[],
-          bg:'#fff',
-          color:'#27CCC0',
-          logo:'block',
-          logo2:'none',
-          navColor:'#888',
-          shadow:'1px 0 2px #333',
           store:this.$store,
         }
       },
@@ -130,15 +122,11 @@
             this.HandPickBlog=resp.data;
           })
         },
-        //获取所有评论
-        getAllComments(){
-          this.$axios.get(`${config.server}/api/getAllComments`).then((resp)=>{this.AllComments=resp.data});
-        },
         //获取评论条数
         CommentsNum(id){
           var num=0;
-          for (var i=0;i<this.AllComments.length;i++) {
-            if (this.AllComments[i].pid == id) {
+          for (var i=0;i<this.store.state.AllComments.length;i++) {
+            if (this.store.state.AllComments[i].pid == id) {
               num=num+1
             }
           }
@@ -154,9 +142,7 @@
       },
       created(){
           this.getBlog();
-          this.getClassify();
           this.getHandpickBlog();
-          this.getAllComments()
       },
       mounted(){
           this.headerStyle();

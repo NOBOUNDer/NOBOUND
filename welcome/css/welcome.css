@@ -1,0 +1,208 @@
+@font-face {
+  font-family: englishFont;
+  src: url("../fonts/WSansNew-Book.woff.ttf");
+}
+@media screen and (min-width: 1200px){
+  .logo2 img{
+    height: 80px;
+  }
+}
+@media screen and (max-width: 1200px){
+  .logo2 img{
+    height: 75px;
+  }
+}
+@media screen and (max-width: 992px){
+  .logo2 img{
+    height: 48px;
+  }
+}
+@media screen and (min-width: 768px){
+  .toHome:hover{
+    background: #27CCC0 !important;
+  }
+  .byleon:hover{
+    color: #27CCC0 !important;
+  }
+  .fa:hover{
+    color: #27CCC0 !important;
+  }
+}
+@media screen and (max-width: 767px){
+  .logo2 img{
+    height: 26px;
+  }
+}
+@media screen and (min-width: 576px){
+  .welcome-2-title h3,.welcome-3-title h3{
+    font-size: 32px;
+  }
+  .welcome-2-title p,.welcome-3-title p{
+    font-size: 26px !important;
+  }
+  .welcome2-content,.welcome3-content{
+    font-size: 22px !important;
+  }
+  .logo img{
+    width: 200px;
+  }
+  .toHome{
+    width: 150px;
+    padding: 5px 10px;
+  }
+}
+@media screen and (max-width: 576px){
+  .logo2 img{
+    height: 26px;
+  }
+  .welcome-2-title h3,.welcome-3-title h3{
+    font-size: 24px;
+  }
+  .welcome-2-title p,.welcome-3-title p{
+    font-size: 16px !important;
+  }
+  .welcome2-content, .welcome3-content{
+    font-size: 16px !important;
+  }
+  .logo2 a{
+    padding: 0 10px;
+  }
+  .logo2 img{
+    padding: 0;
+  }
+  .logo img{
+    width: 100px;
+  }
+  .toHome{
+    width: 100px;
+    padding: 5px;
+  }
+}
+*,:after,:before{
+  /* 通配符选择器无法选中页面中的伪元素 */
+  padding:0;
+  margin:0;
+  border:none;
+  outline: none;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none !important;
+  color:inherit;
+  font-weight: normal;
+  font-size:inherit;
+  user-select: unset !important;
+}
+body{
+  background: #fff;
+}
+.container{
+  height: 100vh;
+  position: relative;
+}
+.fa{
+  position: absolute;
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+  transition: all .5s .5s;
+  z-index: 111;
+}
+.fa-arrow-circle-left{
+  opacity: 0;
+  left: 29%;
+}
+.fa-arrow-circle-right{
+  right: 50%;
+  transform: translateX(50%);
+}
+.toHome{
+  background: #333;
+  color: #fff !important;
+  box-shadow: 1px 1px 3px #888;
+  font-style: italic;
+  opacity: 0;
+  transition: all .5s .5s;
+  z-index: -111;
+  text-align: center;
+  font-size: 12px !important;
+  position: absolute;
+  right: 0;
+  bottom: 14%;
+}
+.toHome span{
+  font-family: englishFont !important;
+}
+.logo img{
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.welcome-box{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  padding: 0;
+}
+.welcome-lists{
+  height: 100vh;
+}
+.welcome-box ul{
+  position: relative;
+  height: 100%;
+}
+.welcome-box ul li{
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  transition: all .5s .5s;
+}
+.welcome-1-title{
+  text-align: center;
+  margin-top: 50px;
+  font-style: italic;
+}
+.welcome-1-title h3,.welcome-1-title span{
+  font-family: 'englishFont' !important;
+  font-weight: 400;
+  font-size: 20px;
+}
+.welcome-1-title p{
+  font-family: 'englishFont';
+  font-weight: 400;
+  font-size: 18px;
+}
+.control{
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 14%;
+  left: 0;
+}
+.welcome-2-title,.welcome-3-title{
+  text-align: center;
+  font-style: italic;
+}
+.welcome-2-title h3,.welcome-3-title h3{
+  font-family: 'englishFont';
+}
+.welcome-2-title p,.welcome-3-title p{
+  font-family: 'englishFont';
+}
+.welcome2-content{
+  font-style: italic;
+  font-family: 'englishFont';
+}
+.welcome3-content{
+  font-style: italic;
+  font-family: 'englishFont';
+}
+.welcome3-content span{
+  font-weight: bold;
+}
+.byleon{
+  color: #ce0000;
+  font-weight: bold;
+  transition: all .3s;
+}

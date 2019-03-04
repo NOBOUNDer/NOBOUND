@@ -14,7 +14,7 @@
                 <div class="article-bottom row justify-content-md-between justify-content-center">
                   <div class="col-md-9 col-12 justify-content-between d-none d-sm-flex justify-content-md-start">
                     <span class="col-auto pl-md-0"><i class="fa fa-pencil" aria-hidden="true"></i> By {{v.author}}</span>
-                    <span class="col-auto "><i class="fa fa-th-large"></i> <router-link :to="'/blogClassify/'+v.pid">{{AllClassify[v.pid-1]?AllClassify[v.pid-1].navName:""}}</router-link></span>
+                    <span class="col-auto "><i class="fa fa-th-large"></i> <router-link :to="'/blogClassify/'+v.pid">{{store.state.ClassifyData[v.pid-1]?store.state.ClassifyData[v.pid-1].navName:""}}</router-link></span>
                     <span class="col-auto "><i class="fa fa-calendar"></i> {{crtTimeFtt(v.time)}}</span>
                     <span class="col-auto "><i class="fa fa-commenting-o"></i> {{CommentsNum(v.id)}} comments</span>
                   </div>
@@ -46,18 +46,8 @@
         name: "Search",
       data(){
           return {
-            bg:'#fff',
-            color:'#27CCC0',
-            h3:'#333',
-            navColor:'#888',
-            shadow:'1px 0 2px #333',
             results:[],
-            AllClassify:[],
-            AllComments:[],
-            AllBlog:[],
             RecentBlog:[],
-            logo:'block',
-            logo2:'none',
             store:this.$store,
           }
       },
@@ -89,35 +79,21 @@
             return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()+' '+date.getHours()+':'+date.getMinutes();
           }
         },
-        //获取所有分栏
-        getAllClassify(){
-          this.$axios.get(`${config.server}/api/getAllClassify`).then((resp)=>{
-            this.AllClassify=resp.data;
-          })
-        },
-        //获取所有评论
-        getAllComments(){
-          this.$axios.get(`${config.server}/api/getAllComments`).then((resp)=>{this.AllComments=resp.data});
-        },
         //获取评论条数
         CommentsNum(id){
           var num=0;
-          for (var i=0;i<this.AllComments.length;i++) {
-            if (this.AllComments[i].pid == id) {
+          for (var i=0;i<this.store.state.AllComments.length;i++) {
+            if (this.store.state.AllComments[i].pid == id) {
               num=num+1
             }
           }
           return num;
         },
-        //获取所有文章
-        getAllBlog(){
-          this.$axios.get(`${config.server}/api/getBlog`).then(resp=>{this.AllBlog=resp.data});
-        },
         //近期评论所属文章所属分栏
         Pid(id){
-          for (var i = 0; i < this.AllBlog.length; i++) {
-            if (this.AllBlog[i].id == id) {
-              return this.AllBlog[i].pid;
+          for (var i = 0; i < this.store.state.AllBlog.length; i++) {
+            if (this.store.state.AllBlog[i].id == id) {
+              return this.store.state.AllBlog[i].pid;
             }
           }
         },
@@ -130,9 +106,6 @@
       },
       created(){
           this.getSearchResult(this.$route.params.keyword);
-          this.getAllBlog();
-          this.getAllClassify();
-          this.getAllComments();
           this. getRecentBlog();
       },
       mounted(){

@@ -53,7 +53,7 @@
   }
   p{
     font-size: 24px;
-    font-family: 思源黑体 CN Normal;
+    font-family: 微软雅黑;
     font-weight: 300;
   }
 </style>

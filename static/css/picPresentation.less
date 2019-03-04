@@ -1,0 +1,107 @@
+@media screen and (min-width: 1474px){
+  .presentation-top-title{
+    background-size: 100% auto !important;
+  }
+}
+@media screen and (min-width: 940px) and (max-width: 992px){
+  .presentation-top-title{
+    background-size: 100% auto !important;
+  }
+}
+@media screen and (min-width: 992px) {
+  .presentation-top-title{
+      height: 350px;
+  }
+  .presentation-img-box {
+    .shade{
+      z-index: 11;
+      opacity: 0;
+      height: 100%;
+      background: rgba(39, 204, 192, 0.8);
+      transition: all .3s;
+    }
+  }
+}
+@media screen and (max-width: 992px){
+  .presentation-top{
+    .presentation-top-title{
+      height: 220px;
+      top: 65px;
+    }
+    height: 285px;
+  }
+  .shade{
+    display: none !important;
+  }
+}
+@media screen and (max-width: 690px){
+  .presentation-top{
+    .presentation-top-title{
+      height: 167px;
+      top: 65px;
+    }
+    height: 232px;
+  }
+}
+@media screen and (max-width: 480px){
+  .presentation-top{
+    .presentation-top-title{
+      height: 140px;
+      top: 65px;
+    }
+    height: 205px;
+  }
+}
+html, body {
+  position: relative;
+  height: 100%;
+}
+.presentation{
+  background: #f8f8f8;
+  .presentation-top{
+    .presentation-top-title{
+      position: relative;
+      background-size: auto 100%;
+    }
+  }
+  .presentation-lists{
+    margin-top: 50px;
+    padding-bottom: 50px;
+    .presentation-img-box{
+      position: relative;
+      .shade{
+        span{
+          padding: 10px 15px;
+          font-size: 12px;
+          font-family: 'englishFont' !important;
+          background: #252525;
+          border-radius: 5px;
+          color: #fff;
+          position: absolute;
+          top: 30%;
+          left: 50%;
+          transform: translateY(-50%) translateX(-50%);
+          transition: all .3s;
+          cursor: pointer;
+        }
+      }
+      &:hover{
+        .shade{
+          span{
+            top: 50%;
+          }
+          opacity: 1;
+        }
+      }
+      img{
+        cursor: pointer;
+      }
+    }
+    span{
+      font-size: 17px;
+      font-family: 'englishFont' !important;
+      font-weight: 500;
+    }
+  }
+}
+

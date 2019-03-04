@@ -370,7 +370,7 @@
 }
   nav{
     color: #d1d1d1;
-    font-family: "W Sans New Book";
+    font-family: "englishFont" !important;
   }
   .navSon{
     z-index: -1111;

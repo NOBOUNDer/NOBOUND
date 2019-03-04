@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div id="Argentina" class="container-fluid" :style="{transform:`translateX(${this.store.state.topRight})`,transition:'all .7s ease .2s'}">
-      <div class="lilys-lists container">
+    <div id="Argentina" class="container-fluid presentation" :style="{transform:`translateX(${this.store.state.topRight})`,transition:'all .7s ease .2s'}">
+      <div class="presentation-lists container">
         <ul class="row justify-content-start">
           <li v-for="(v,index) in ImgData" class="row col-12 col-md-6 col-lg-3 no-gutters mb-4">
-            <div class="lilys-img-box col-12">
+            <div class="presentation-img-box col-12">
               <div class="shade position-absolute col-12 p-0">
                 <span @click="ViewLarger(index)">View Larger</span>
               </div>
@@ -34,7 +34,6 @@
         swiperIndex:'test2',
         swiperSon:'test3',
         bannerTitleAlign:'left',
-        bottom:(188+document.documentElement.clientHeight/2+10)+'px',
         store:this.$store,
       }
     },
@@ -86,70 +85,14 @@
 </script>
 
 <style scoped>
-  @media screen and (min-width: 992px){
-    .lilys-img-box .shade{
-      z-index: 11;
-      opacity: 0;
-      height: 100%;
-      background: rgba(39, 204, 192, 0.8);
-      transition: all .3s;
-    }
-    .lilys-img-box .shade span{
-      padding: 10px 15px;
-      font-size: 12px;
-      font-family: 'englishFont' !important;
-      background: #252525;
-      border-radius: 5px;
-      color: #fff;
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translateY(-50%) translateX(-50%);
-      transition: all .3s;
-      cursor: pointer;
-    }
-    .lilys-img-box:hover>.shade{
-      opacity: 1;
-    }
-    .lilys-img-box:hover>.shade>span{
-      top: 50%;
-    }
-  }
+  @import "../../static/css/picPresentation.css";
   @media screen and (max-width: 992px){
-    .shade{
-      display: none !important;
-    }
     #Argentina{
       padding-top: 65px !important;
     }
   }
-  html, body {
-    position: relative;
-    height: 100%;
-  }
   #Argentina{
-    background: #f8f8f8;
     padding-top: 110px;
-  }
-  .lilys-lists span{
-    font-family: 'englishFont' !important;
-    font-size: 17px;
-    font-weight: 500;
-  }
-  .lilys-lists{
-    margin-top: 50px;
-    padding-bottom: 50px;
-  }
-  .lilys-img-box{
-    position: relative;
-  }
-  .lilys-img-box img{
-    cursor: pointer;
-  }
-  .lilys-description{
-    font-size: 13px;
-    color: #4e4e4e;
-    margin-top: 72px;
   }
 </style>
 
